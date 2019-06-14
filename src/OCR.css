@@ -1,0 +1,303 @@
+body{
+  /* background:linear-gradient(45deg, rgba(1,2,22,0) 0%, rgba(38,64,98,0.8) 100%); */
+  background:#001529
+}
+#OCR{
+  min-width: 1280px;
+  max-width: 1980px;
+  margin: 0 auto;
+}
+/* 头部样式 */
+
+Header,#content .pic-storage,#content .distinguish{
+  width: 100%;
+  margin-top: 30px;
+  color:#c3cce5;
+  text-align: center;
+  font-size: 30px;
+}
+.info-left,.info-right{
+  display: inline-block;  
+  width:200px;
+  height: 5px;
+  margin-bottom: 7px;
+}
+.info-left{
+  background: linear-gradient(90deg, rgba(29,208,236,0) 0%, rgba(29,208,237,0.8) 100%);
+  margin-right: 30px;
+}
+.info-right{
+  background: linear-gradient(270deg, rgba(29,208,236,0) 0%, rgba(29,208,237,0.8) 100%);
+  margin-left: 30px;
+}
+
+/* 扫描区域中间部分样式 */
+
+#content{
+  margin: 30px 0;
+}
+#ocrTips{
+  /* height: 400px; */
+  display: flex;
+  justify-content: center;
+}
+#content .scanning{
+  position: relative;
+  margin-left: 40px;
+  width:800px;
+  height: 400px;
+  background-image: url(./bottomphoto.png);
+  overflow: hidden;
+}
+#content .top_border,#content .right_border,#content .bottom_border,#content .left_border{
+  position: absolute;
+  width: 20px;
+  height: 20px;
+}
+#content .top_border{
+  left:20px;
+  top:20px;
+  border-left:2px solid #1dd0ed;
+  border-top: 2px solid #1dd0ed;
+}
+#content .right_border{
+  left:calc(100% - 40px);
+  top:20px;
+  border-right:2px solid #1dd0ed;
+  border-top: 2px solid #1dd0ed;
+}
+#content .bottom_border{
+  left:calc(100% - 40px);
+  top:calc(100% - 55px);
+  border-right:2px solid #1dd0ed;
+  border-bottom: 2px solid #1dd0ed;
+}
+#content .left_border{
+  left:20px;
+  top:calc(100% - 55px);
+  border-left:2px solid #1dd0ed;
+  border-bottom: 2px solid #1dd0ed;
+}
+#content .scanning .btn{
+  position: relative;
+  background: rgba(29,208,237,.3);
+  color:#c3cce5;
+  width:100px;
+  left:calc(100% - 120px);
+  top:calc(100% - 33px);
+}
+#content .scanning .btn.hidden{
+  display: none;
+}
+#content .scanning .btn:hover{
+  background: rgba(29,208,237,.7);
+}
+#content .line{
+  background: url('./scan_line_v.png');
+  height: 100%;
+  width: 20px;
+  top:0;
+  -moz-background-size: 100% 100%;  
+  -o-background-size: 100% 100%;  
+  -webkit-background-size: 100% 100%;  
+  background-size: 100% 100%;  
+}
+#content .begin{
+  display: flex;
+  position: absolute;
+  top:0;
+  width: 20px;
+  height: 100%;
+  left:-20px;
+}
+#content .imageLarge,#content .imageLarge img,#content .imageLarge div div{
+  position: absolute;
+  left:0;
+  right:0;
+  top:0;
+  bottom:0;
+  margin:auto;
+}
+/* 该样式调整扫描区域位置 */
+#content .imageLarge{
+  width:730px;
+  height: 315px;
+  margin-bottom: 50px;
+}
+/*  */
+#content .imageLarge div{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  color:rgba(0,0,0,0);
+  
+}
+
+/* 临时添加的样式，点击按钮后消除 */
+#content .imageLarge div.blank{
+  background:rgb(31,85,118);
+}
+
+/* 扫描区文字div */
+#content .imageLarge div .tips{
+  width: 100%;
+  height: 100px;
+  text-align: center;
+  color:#c3cce5;
+  font-size: 20px;
+}
+/*  */
+#content .imageLarge img{
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* 这边动画分别为父元素和子元素设置宽度，但宽度不一致，引用两个动画 */
+@keyframes move {
+  0%{
+    width:20px;
+  }
+  50%{
+    width:820px;
+  }
+  100%{
+    width:20px;
+  }
+}
+
+@keyframes holder{
+  0%{
+    width:0px;
+  }
+  50%{
+    width:800px;
+  }
+  100%{
+    width:0px;
+  }
+}
+
+#content .begin.end{
+  background:rgba(70,169,243,.3);
+  animation: move 4s ease-in-out infinite;
+}
+#content .placeholder{
+  animation: holder 4s ease-in-out infinite;
+}
+/* 扫描左侧识别 */
+
+#content .recognition{
+  width: 400px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center
+}
+
+/* 对ant框架的单选框做了样式修改 */
+
+#Redio{
+  position: relative;
+  width: 80%;
+  height: 300px;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+#Redio .redio{
+  position: relative;
+  width: 130px;
+  text-align: center;
+  border-radius: 4px;
+  margin: auto;
+}
+#Redio .redio::before{
+  width:0;
+}
+/*  */
+
+#Redio+.btn{
+  width: 80%;
+  margin-top: 20px;
+}
+
+/* 图片存储区域 */
+
+#content .pic-storage{
+  margin-top:40px;
+}
+#content .pic-storage .picture{
+  border: solid 1px #c3cce5;
+  width: 1180px;
+  height: 200px;
+  margin: 50px auto;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+#content .pic-storage .picture div{
+  width:200px;
+  height: 170px;
+  position: relative;
+  margin: 0 10px 0 25px;
+}
+#content .pic-storage .picture div.disabled:hover{
+  cursor: not-allowed;
+}
+#content .pic-storage .picture div.dashed{
+  border: dashed 2px rgb(23,169,196);
+  border-radius: 10px
+}
+#content .pic-storage .picture div:hover{
+  cursor: pointer;
+}
+#content .pic-storage .picture div img{
+  max-width: 100%;
+  max-height: 100%;
+  position: absolute;
+  left: 0;
+  right:0;
+  bottom:0;
+  top:0;
+  margin:auto;
+  padding: 5px;
+}
+
+/* 识别结果 */
+
+#content .distinguish .result{
+  width: 1280px;
+  /* height: 400px; */
+  margin :50px auto;
+  display: flex;
+  justify-content: space-between;
+}
+#content .distinguish .result .local,#content .distinguish .result .server{
+  width: 600px;
+  height: 100%;
+  border:solid 1px #c3cce5;
+  border-radius: 10px;
+  font-size: 18px;
+  text-align: start;
+}
+#content .distinguish .result ul{
+  line-height: 2;
+  font-size: 17px;
+  list-style: none;
+  margin-left: 20px;
+  padding: 0;
+  /* overflow: auto; */
+  white-space:nowrap;
+}
+#content .distinguish .result .second{
+  overflow-x: auto;
+}
+#content .distinguish .result .result_name,#content .distinguish .result .result_value{
+  display: flex;
+}
+#content .distinguish .result textarea{
+  width:100%;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background:#001529
+}
